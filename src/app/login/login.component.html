@@ -1,0 +1,38 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>splash-app</title>
+</head>
+
+<body>
+    <div class="container full-height">
+        <div class="row flex center v-center full-height">
+            <div class="col-8 col-sm-4">
+                 <div id="centerpiece" class="container full-height" *ngIf="globals.loading">
+                    <div id="spaceholder"></div>
+                    <mat-progress-spinner
+                    [color]="color"
+                    [mode]="mode"
+                    >
+                    </mat-progress-spinner> 
+                </div>
+                <div class="form-box" *ngIf="!globals.loading">
+                        <fieldset>
+                            <legend>Sign in</legend>
+                            <img id="avatar" class="avatar round" src="../../assets/img/speck1.png">
+                            <div class="alert alert-failure" role="alert" [hidden]="!globals.hasAlert">
+                                <span>
+                                        {{globals.loginAlert}}
+                                    
+                                </span>
+                            </div> 
+                            <input class="form-control" type="email" id="username" name="email" placeholder="email" [formControl]='emailAddressControl'>
+                            <input class="form-control" type="password" id="password"
+                                name="password" placeholder="password" [formControl]="passwordControl"><a [routerLink]="['/createAccount']">Create an account</a>
+                                <button class="btn btn-primary btn-block" type="button" (click) = 'login()'>Login</button>
+                        </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

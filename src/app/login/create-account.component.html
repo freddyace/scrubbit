@@ -1,0 +1,34 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>splash-app</title>
+</head>
+
+<body>
+    <div class="container full-height">
+        <div class="row flex center v-center full-height">
+            <div class="col-8 col-sm-4">
+                <div class="form-box">
+                        <fieldset>
+                            <legend>{{formTitle}}</legend>
+                            <img id="avatar" class="avatar round" src="assets/img/speck1.png">
+                            <div class="alert alert-failure" role="alert" [hidden]="!globals.hasAlert">
+                                <span>
+                                        {{alert}}
+                                    
+                                </span>
+                            </div>
+                            <input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name" [formControl]="firstnameControl">
+                            <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Last Name" [formControl]="lastnameControl">
+                            <input class="form-control" type="email" id="username" name="email" placeholder="email" [formControl]="emailControl">
+                            <input class="form-control" type="password" id="password" name="password" placeholder="password" [formControl]="passwordControl">
+                            <input class="form-control" type="password" id="password-1" name="confirm-password" placeholder="confirm password" [formControl]="confirmPasswordControl">
+                            <a [routerLink]="['/login']">Cancel</a>
+                            <button class="btn btn-primary btn-block" type="button" (click) = 'createAccount()'>Create Account</button>
+                        </fieldset>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

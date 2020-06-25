@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>splash-app</title>
+</head>
+
+<body>
+    <div class="login-clean">
+            <h2 class="sr-only">Login Form</h2>
+            <h5>{{newVehicle}}</h5>
+            <div class="illustration"><i class="icon ion-ios-photos-outline"></i></div>
+            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Year</button>
+                <div class="dropdown-menu" role="menu">
+                    <ng-template ngFor let-item [ngForOf]="YearList" let-i="index" [ngForTrackBy]="">
+                    <a class="dropdown-item" role="presentation" (click)="addVehicleYear(item)">{{item}}</a>
+                </ng-template>
+                </div>
+            </div>
+            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Make&nbsp;</button>
+                <div class="dropdown-menu" role="menu">
+                    <ng-template ngFor let-item [ngForOf]="MakeList" let-i="index" [ngForTrackBy]="">
+                        <a class="dropdown-item" role="presentation" (click)="addVehicleMake(item)">{{item}}</a>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Model&nbsp;</button>
+                    <div class="dropdown-menu" role="menu">
+                        <ng-template ngFor let-item [ngForOf]="ModelList" let-i="index" [ngForTrackBy]="">
+                            <a class="dropdown-item" role="presentation" (click)="addVehicleModel(item)">{{item}}</a>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Color&nbsp;</button>
+                    <div class="dropdown-menu" role="menu">
+                        <ng-template ngFor let-item [ngForOf]="ColorList" let-i="index" [ngForTrackBy]="">
+                            <a class="dropdown-item" role="presentation" (click)="addVehicleColor(item)">{{item}}</a>
+                        </ng-template>
+                    </div>
+                </div>
+                <h6>License plate #</h6>
+                <input class="form-control" type="text" [formControl]="plateNumControl">
+                <h6>Additional notes about vehicle</h6>
+                <textarea class="form-control" [formControl]="additonalNotesControl"></textarea>
+                <button class="btn btn-primary btn-block" (click)="submitForm()">Save</button>
+            </div><a class="forgot" [routerLink]="['/dashboard']">cancel</a>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
+    <script src="assets/js/Date-Range-Picker.js"></script>
+    <script src="assets/js/Bootstrap-DateTime-Picker-1.js"></script>
+    <script src="assets/js/Bootstrap-DateTime-Picker-2.js"></script>
+    <script src="assets/js/Bootstrap-DateTime-Picker.js"></script>
+    <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
+</body>
+
+</html>

@@ -24,9 +24,27 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/styles.css",
+              "src/assets/css/Bootstrap-Callout-Success.css",
+              "src/assets/css/button-1.css",
+              "src/assets/css/button-thib.css",
+              "src/assets/css//button.css",
+              "src/assets/css/Contact-Form-Clean.css",
+              "src/assets/css/Contact-Form-v2-Modal--Full-with-Google-Map.css",
+              "src/assets/css/dashboard.css",
+              "src/assets/css/Features-Boxed.css",
+              "src/assets/css/gradient-navbar.css",
+              "src/assets/css/Hover-Button-1.css",
+              "src/assets/css/login-form-1.css",
+              "src/assets/css/Login-Form-Clean-1.css",
+              "src/assets/css/Login-Form-Clean.css",
+              "src/assets/css/styles.css",
+              "src/assets/css/untitled.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/bootstrap/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -85,9 +103,11 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/bootstrap/"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +139,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "splashapp"
+    }
+  },
+  "defaultProject": "splashapp",
+  "cli": {
+    "analytics": false
+  }
 }
