@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentObserver } from '@angular/cdk/observers';
+import { UserService } from 'src/app/login/service/user.service';
+import { Router } from '@angular/router';
+import { Globals } from 'src/app/global/globals';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-my-locations',
@@ -12,9 +16,13 @@ import { ContentObserver } from '@angular/cdk/observers';
 })
 export class MyLocationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private router:Router, 
+    public globals:Globals, private cookieService: CookieService) { }
 
   ngOnInit(): void {
+    console.log("In ngOnInit...");
+    //console.log(this.globals.loginResponse.session);
+
   }
 
   log() {

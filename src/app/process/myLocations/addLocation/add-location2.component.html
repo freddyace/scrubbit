@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>splash-app</title>
+    <!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa:300,400">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="assets/css/Bold-BS4-Responsive-Pricing-Table-Snippet.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-Callout-Success.css">
+    <link rel="stylesheet" href="assets/css/button-1.css">
+    <link rel="stylesheet" href="assets/css/button-2.css">
+    <link rel="stylesheet" href="assets/css/Button-thib.css">
+    <link rel="stylesheet" href="assets/css/button.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/Features-Boxed.css">
+    <link rel="stylesheet" href="assets/css/gradient-navbar-1.css">
+    <link rel="stylesheet" href="assets/css/gradient-navbar.css">
+    <link rel="stylesheet" href="assets/css/Hover-Button-1-1.css">
+    <link rel="stylesheet" href="assets/css/Hover-Button-1-2.css">
+    <link rel="stylesheet" href="assets/css/Hover-Button-1.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/css/lightpick.min.css">
+    <link rel="stylesheet" href="assets/css/login-form-1.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean-1.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Pricing-Table---EspacioBinariocom.css">
+    <link rel="stylesheet" href="assets/css/Social-Icon-Circle.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="assets/css/Wave-Button.css"> -->
+</head>
+
+<body class="wrapper">
+    <section class="pricing py-5">
+        <div><a class="btn btn-sm animated-button victoria-one" href="#" style="margin-top: -40px;margin-bottom: 40px;margin-left: 20px;" [routerLink]="['/addLocation']">&lt;&lt; Back</a></div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-4">
+                    <div id = "slide" class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="text-uppercase text-center text-muted card-title">new address</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Zip</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input [formControl]='zipControl' type="text"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>City</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input [formControl]='cityControl' type="text"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>State</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input [formControl]='stateControl' type="text"></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address Name (optional)</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input [formControl]='locationNameControl' type="text"></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <hr>
+                            <ul class="fa-ul" [hidden]="!globals.hasAlert">
+                                <!-- <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li> -->
+                                <li [hidden]="!globals.addVehicle2_form_field_error">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: #d17171;"></i></span></li>
+                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);" (click) = "validate()">Submit &gt;&gt;</a><a class="card-link" [routerLink]="['/dashboard']" style="margin-left: 40%;">cancel</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
+    <script src="assets/js/Date-Range-Picker.js"></script>
+    <script src="assets/js/Bootstrap-DateTime-Picker-1.js"></script>
+    <script src="assets/js/Bootstrap-DateTime-Picker-2.js"></script>
+    <script src="assets/js/Bootstrap-DateTime-Picker.js"></script>
+    <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
+</body>
+
+</html>

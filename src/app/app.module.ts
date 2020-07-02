@@ -19,6 +19,7 @@ import { MyVehiclesComponent } from './process/myVehicles/my-vehicles.component'
 import { MyLocationsComponent } from './process/myLocations/my-locations.component';
 import { AddLocationComponent } from './process/myLocations/addLocation/add-location.component';
 import { SuccessComponent } from './process/success.component';
+import { AddLocation2Component } from './process/myLocations/addLocation/add-location2.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +34,9 @@ import { SuccessComponent } from './process/success.component';
     OrderComponent,
     MyLocationsComponent,
     AddLocationComponent,
-    SuccessComponent
-
-  ],
+    SuccessComponent,
+    AddLocation2Component
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

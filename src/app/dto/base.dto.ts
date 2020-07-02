@@ -1,6 +1,7 @@
 import { IService } from '../entity/service';
 import { IVehicle } from '../dashboard/vehicle/vehicle';
 import { ITransaction } from '../entity/transaction';
+import { IUserLocation } from '../entity/user.location';
 
 /**
  * The only different between these 3 fields
@@ -10,7 +11,7 @@ import { ITransaction } from '../entity/transaction';
  * with persisted objects fetched from the DB. 
  */
 export interface IBaseDto{
-    serviceLocationList: IService[], 
+    userLocationList: IUserLocation[], 
     vehicleList: IVehicle[],
     transactionList: ITransaction[],
 }

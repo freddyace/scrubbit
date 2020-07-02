@@ -12,6 +12,8 @@ import { IAddVehicleResponse } from 'src/app/response/add.vehicle.response';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { Globals } from 'src/app/global/globals';
+import { IUserLocation } from 'src/app/entity/user.location';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -20,6 +22,7 @@ export class UserService{
     private createUserEndpointUrl = "http://localhost:5000/v1/splash/createUser";
     private authenticatUserEnpointUrl = "http://localhost:5000/v1/login";
     private addVehicleEnpoint = "Http://localhost:5000/v1/scrubbit/addVehicle";
+    private addUserLocationEndpoint = "http://localhost:5000/v1/scrubbit/addLocation"
     private errorMessage = "An error occured..."
     params = new URLSearchParams();
 
@@ -40,7 +43,10 @@ export class UserService{
         let cookie = this.cookieService.get('sessionId');
         console.log("Cookie: "+cookie);
         return this.http.post<ILoginResponse>(this.authenticatUserEnpointUrl,loginCredential, {headers: {'sessionId':this.cookieService.get('sessionId')}}).pipe(
-            tap(resp => console.log("Response: "+ JSON.stringify(resp))),
+            map((data: ILoginResponse) => {
+                console.log(data);
+                return data;
+              }),
             catchError(this.handleError2(this.router))
 
         );
@@ -67,6 +73,14 @@ export class UserService{
         headers.append('Content-Type', 'applicaton/json');
 
         let result =  this.http.post<ICreateUserResponse>(this.createUserEndpointUrl, user, {headers}).pipe(
+            catchError(this.handleError)
+            
+        )
+        return result;
+    }
+    postLocation(location: IUserLocation): Observable<ICreateUserResponse>{
+        console.log("in post location");
+        let result =  this.http.post<ICreateUserResponse>(this.addUserLocationEndpoint, location, {headers: {'sessionId':this.cookieService.get('sessionId')}}).pipe(
             catchError(this.handleError)
             
         )

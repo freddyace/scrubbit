@@ -56,16 +56,16 @@ export class LoginComponent implements OnInit {
         this.userService.logIn(this.loginCredential).subscribe(
           response => {
             if(response.resultCode == 404040){
-              //this.loading = false;
-              this.globals.setLoadingDone
-              //this.notLoading=true;
+              console.log(this.globals.session);
               this.globals.session = response.session;
+              console.log()
+
               console.log("Saving cookie: "+ this.globals.session.sessionId)
               this.cookieService.set('sessionId',this.globals.session.sessionId)
               this.router.navigate(['/dashboard']);
             }else{
-              //this.loading = false;
-              this.hasAlert = true;
+              this.globals.loading = false;
+              this.globals.hasAlert = true;
               this.globals.loginAlert = "Authentication failed";
               this.router.navigate(['/login']);
             }

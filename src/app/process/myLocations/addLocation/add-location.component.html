@@ -1,1 +1,62 @@
-<p>add-location works!</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>splash-app</title>
+</head>
+
+<body class="wrapper">
+    <section class="pricing py-5">
+        <div style="margin-top: -40px;margin-bottom: 40px;margin-left: 20px;"><a class="btn btn-sm animated-button victoria-one" [routerLink]="['/dashboard']">&lt;&lt; Back</a></div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-4">
+                    <div id = "slide" class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="text-uppercase text-center text-muted card-title">New Address</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Street Address 1</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input [formControl]='address1Control' type="text" placeholder="ex: 923 Riverwood St"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Street Address 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input [formControl]='address2Control' type="text" placeholder="Apt 21-B"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <hr>
+                            <ul class="fa-ul" [hidden]="!globals.hasAlert">
+                                <!-- <li [hidden]="!globals.addVehicle1_form_field_error">Valid<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li> -->
+                                <li [hidden]="!globals.addVehicle1_form_field_error">{{invalidFieldMessage}}<span class="fa-li"><i class="fa fa-times" style="color: #d17171;"></i></span></li>
+                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);" (click) = "validate()">Next &gt;&gt;</a><a class="card-link" [routerLink]="['/dashboard']" style="margin-left: 40%;">cancel</a></div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
+    <script src="assets/js/Date-Range-Picker.js"></script>
+    <script src="assets/js/Bootstrap-DateTime-Picker-1.js"></script>
+    <script src="assets/js/Bootstrap-DateTime-Picker-2.js"></script>
+    <script src="assets/js/Bootstrap-DateTime-Picker.js"></script>
+    <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
+</body>
+
+</html>

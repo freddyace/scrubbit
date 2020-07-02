@@ -11,6 +11,8 @@ import { OrderComponent } from './process/order.component';
 import { MyVehiclesComponent } from './process/myVehicles/my-vehicles.component';
 import { MyLocationsComponent } from './process/myLocations/my-locations.component';
 import { SuccessComponent } from './process/success.component';
+import { AddLocationComponent } from './process/myLocations/addLocation/add-location.component';
+import { AddLocation2Component } from './process/myLocations/addLocation/add-location2.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -23,7 +25,9 @@ const routes: Routes = [
   { path: 'Order', component:OrderComponent},
   { path: 'myVehicles', component:MyVehiclesComponent},
   { path: 'myLocations', component:MyLocationsComponent},
-  { path: 'success', component:SuccessComponent}
+  { path: 'success', component:SuccessComponent},
+  { path: 'addLocation', component:AddLocationComponent},
+  { path: 'addLocation2', component:AddLocation2Component}
 ];
 
 @NgModule({
