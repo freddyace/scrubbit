@@ -13,10 +13,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
+                    <div class="card mb-5 mb-lg-0" *ngFor="let userLocation of this.globals.session.baseDto.userLocationList">
                         <div class="card-body">
-                            <h5 class="card-title text-muted text-uppercase text-center">1077 Roanoke Ave, Mcdonough, Ga 30253<br></h5>
-                            <h6 class="card-price text-center">Location Name</h6>
+                            <h5 class="card-title text-muted text-uppercase text-center">{{userLocation.streetAddress1}}, {{userLocation.city}}, {{userLocation.state}} {{userLocation.zip}}<br></h5>
+                            <h6 class="card-price text-center">{{userLocation.name != null ? userLocation.name : "Location"}}</h6>
                             <hr>
                             <ul class="fa-ul">
                                 <li><span class="fa-li"><i class="fa fa-check"></i></span>Open access<br></li>

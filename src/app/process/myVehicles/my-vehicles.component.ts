@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/login/service/user.service';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+import { Globals } from 'src/app/global/globals';
+import { IVehicle } from 'src/app/dashboard/vehicle/vehicle';
 
 @Component({
   selector: 'app-my-vehicles',
@@ -17,10 +22,20 @@ import { Component, OnInit } from '@angular/core';
 ]
 })
 export class MyVehiclesComponent implements OnInit {
+    vehicleList : IVehicle[] = [];
+    hasVehicles : boolean = false;
+  
+  constructor(private userService: UserService, private cookieService:CookieService,
+    private router:Router, public globals:Globals) { 
 
-  constructor() { }
+    }
 
   ngOnInit(): void {
+    this.vehicleList = this.globals.session.baseDto.vehicleList;
+    if(this.vehicleList.length != 0){
+      this.hasVehicles = true;
+    }
+    console.log("has vehicles? :" + this.hasVehicles);
   }
   log(): void {
     

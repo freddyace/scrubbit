@@ -21,6 +21,7 @@ export class MyLocationsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("In ngOnInit...");
+    console.log(this.globals.session.baseDto.userLocationList);
     //console.log(this.globals.loginResponse.session);
 
   }

@@ -29,6 +29,8 @@
                             <input class="form-control" type="email" id="username" name="email" placeholder="email" [formControl]='emailAddressControl'>
                             <input class="form-control" type="password" id="password"
                                 name="password" placeholder="password" [formControl]="passwordControl"><a [routerLink]="['/createAccount']">Create an account</a>
+                                <br><br><input type="checkbox" id="rememberMe" name="rememberMe" value="remember me">
+                                <label for="rememberMe" style="margin-left: 5px;">remember me</label><br>
                                 <button class="btn btn-primary btn-block" type="button" (click) = 'login()'>Login</button>
                         </fieldset>
                 </div>

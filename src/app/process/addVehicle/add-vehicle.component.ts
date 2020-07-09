@@ -6,6 +6,7 @@ import { IVehicle } from 'src/app/dashboard/vehicle/vehicle';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { Globals } from 'src/app/global/globals';
 
 @Component({
   selector: 'app-add-vehicle',
@@ -38,10 +39,11 @@ export class AddVehicleComponent implements OnInit {
     vehicleColor: "",
     vehicleType: "",
     vehiclePhotoPath: "",
-    userId: ""
+    userId: "",
+    vehicleModel: ""
   }
   constructor(private userService: UserService, private cookieService:CookieService,
-    private router:Router) { }
+    public globals:Globals, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -56,7 +58,7 @@ export class AddVehicleComponent implements OnInit {
   }
   addVehicleModel(item): void{
     this.newVehicle += " "+item;
-    this.vehicle.vehicleType = item;
+    this.vehicle.vehicleModel = item;
   }
   addVehicleColor(item): void{
     console.log("In add vehicle color");
@@ -70,6 +72,7 @@ export class AddVehicleComponent implements OnInit {
         console.log(data)
         if(data.resultCode==404556){
           console.log("Success");
+          this.globals.session = data.session;
           this.router.navigate(['/success']);
           
         }

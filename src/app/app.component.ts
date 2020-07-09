@@ -26,12 +26,9 @@ export class AppComponent {
   constructor(private userService: UserService, private router:Router, 
     public globals:Globals, private cookieService: CookieService){
       this.loading = this.globals.loading;
-      console.log("app component this.loading = "+this.loading);
     }
 
   public ngOnInit(): void {
-    this.cookieService.set('cookie-name', 'cookieValue');
-    console.log(this.cookieService.get('cookie-name'));
   }
 
   public setLoading(): void{

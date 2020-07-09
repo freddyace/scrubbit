@@ -14,11 +14,14 @@ import { Router } from '@angular/router';
 import { Globals } from 'src/app/global/globals';
 import { IUserLocation } from 'src/app/entity/user.location';
 import { map } from 'rxjs/operators';
+import { IRetrieveStateResponse } from 'src/app/response/retrieve.state.response';
+import { IAddUserLocationResponse } from 'src/app/response/add.user.location.repsonse';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService{
+    private retrieveStateEndpointUrl = "http://localhost:5000/v1/retrieveState";
     private createUserEndpointUrl = "http://localhost:5000/v1/splash/createUser";
     private authenticatUserEnpointUrl = "http://localhost:5000/v1/login";
     private addVehicleEnpoint = "Http://localhost:5000/v1/scrubbit/addVehicle";
@@ -28,20 +31,23 @@ export class UserService{
 
     constructor(private http: HttpClient, private router:Router, 
         private globals:Globals, private cookieService: CookieService){
-
+ 
     }
 
+    retrieveState(token: string): Observable<IRetrieveStateResponse>{
+        console.log("Retrieving state");
+        return this.http.get<IRetrieveStateResponse>(this.retrieveStateEndpointUrl, {headers: {'sessionId':this.cookieService.get('sessionId')}}).pipe(
+            map((data: IRetrieveStateResponse) => {
+                console.log(data);
+                return data;
+            }),
+            catchError(this.handleError2(this.router))
+        );
+    }
     logIn(loginCredential: ILoginCredential): Observable<ILoginResponse>{
         let headers = new HttpHeaders();
-        let rout = this.router
-        // headers.set('Access-Control-Allow-Origin', '*')
-        // .set('Access-Control-Allow-Headers', 'Content-Type')
-        // .set('Access-Control-Allow-Methods', 'POST')
-        // .set('token', 'testToken')
-        // .set('Accept', 'application/json')
-        // .set('Content-Type', 'applicaton/json');
+        let rout = this.router;
         let cookie = this.cookieService.get('sessionId');
-        console.log("Cookie: "+cookie);
         return this.http.post<ILoginResponse>(this.authenticatUserEnpointUrl,loginCredential, {headers: {'sessionId':this.cookieService.get('sessionId')}}).pipe(
             map((data: ILoginResponse) => {
                 console.log(data);
@@ -78,9 +84,9 @@ export class UserService{
         )
         return result;
     }
-    postLocation(location: IUserLocation): Observable<ICreateUserResponse>{
+    postLocation(location: IUserLocation): Observable<IAddUserLocationResponse>{
         console.log("in post location");
-        let result =  this.http.post<ICreateUserResponse>(this.addUserLocationEndpoint, location, {headers: {'sessionId':this.cookieService.get('sessionId')}}).pipe(
+        let result =  this.http.post<IAddUserLocationResponse>(this.addUserLocationEndpoint, location, {headers: {'sessionId':this.cookieService.get('sessionId')}}).pipe(
             catchError(this.handleError)
             
         )

@@ -5,5 +5,6 @@ export interface IVehicle {
     vehicleColor: string,
     vehicleType: string
     vehiclePhotoPath: string,
-    userId: string
+    userId: string,
+    vehicleModel: string
 }

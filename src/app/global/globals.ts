@@ -5,10 +5,42 @@ import { ILoginResponse } from '../response/login.response';
 
 @Injectable()
 export class Globals {
-  loginResponse: ILoginResponse;
+  loginResponse: ILoginResponse = {
+    message: "",
+    resultCode: null,
+    session: {
+      sessionId: null,
+      lastLogin: null,
+      serviceList: [],
+      vehicleList: [],
+      transactionList: [],
+      cart: {
+        name: ""
+      },
+      expirationDateTime: null,
+      user: {
+        userFirstname:null,
+        userMiddlename:null,
+        userLastname:null,
+        userPassword:null,
+        userEmail:null,
+        userImagePath:null,
+        userDob:null,
+        userAddressId:null,
+        createDate:null,
+        lastUpdate:null
+      },
+      token: null,
+      baseDto:{    
+        userLocationList: [], 
+        vehicleList: [],
+        transactionList: [],
+      },
+    }
+  }
   loginAlert: string = "";
   hasAlert: boolean = false;
-  session: ISession;
+  session: ISession = undefined;
   loading: boolean = false;
   addVehicle1_form_field_error = false;
   addVehicle2_form_field_error = false;

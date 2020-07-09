@@ -27,7 +27,8 @@ export class AddLocation2Component implements OnInit {
     streetAddress2: "",
     city: "",
     state: "",
-    zip: ""
+    zip: "",
+    name: ""
 
   }
   constructor(private userService: UserService, private cookieService:CookieService,
@@ -56,9 +57,12 @@ export class AddLocation2Component implements OnInit {
     this.userLocation.city = this.cityControl.value;
     this.userLocation.state = this.stateControl.value;
     this.userLocation.zip = this.zipControl.value;
+    this.userLocation.name = this.locationNameControl.value;
     this.userService.postLocation(this.userLocation).subscribe(
       response => {
         if(response.resultCode == 440499){
+          this.globals.session = response.session;
+          console.log(this.globals.session);
           this.router.navigate(["/success"]);
         }
         else{

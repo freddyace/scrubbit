@@ -8,7 +8,7 @@ import { ISession } from '../session/session';
 import { CookieService } from 'ngx-cookie-service';
 import { ThemePalette } from '@angular/material/core';
 import { MatSpinner, ProgressSpinnerMode } from '@angular/material/progress-spinner';
-
+import { plainToClass } from "class-transformer";
 
 @Component({
   selector: 'app-login',
@@ -37,31 +37,25 @@ export class LoginComponent implements OnInit {
   
   constructor(private userService: UserService, private router:Router, 
     public globals:Globals, private cookieService: CookieService) { 
-    console.log("inside constructor");
     this.hasAlert=globals.hasAlert;
-    console.log("Alerts: "+this.loginAlert);
-    console.log("Has alert: "+ this.hasAlert);
   }
   
   login(){
-    console.log("Loggin in.");
-    console.log("Password is: "+ this.passwordControl.value);
-    console.log("Email is: "+ this.emailAddressControl.value);
     this.formIsValid = this.validateForm();
     if(this.formIsValid){
-      //this.loading = true;
       this.globals.setLoading();
       this.loginCredential.username = this.emailAddressControl.value;
       this.loginCredential.password = this.passwordControl.value;
         this.userService.logIn(this.loginCredential).subscribe(
           response => {
+            console.log(response.session);
             if(response.resultCode == 404040){
-              console.log(this.globals.session);
+              console.log(response.session.baseDto);
               this.globals.session = response.session;
-              console.log()
-
-              console.log("Saving cookie: "+ this.globals.session.sessionId)
-              this.cookieService.set('sessionId',this.globals.session.sessionId)
+              this.globals.loading = false;
+              this.globals.hasAlert = false;
+              this.cookieService.set('sessionId',response.session.sessionId);
+              console.log("Saving the following sessionId for session: "+ response.session.sessionId);
               this.router.navigate(['/dashboard']);
             }else{
               this.globals.loading = false;
@@ -79,6 +73,26 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let cookie = this.cookieService.get("sessionId");
+    console.log(cookie);
+    this.globals.loading = true;
+    this.userService.retrieveState(cookie).subscribe(
+      response => {
+        console.log(response);
+        if(response.resultCode == 303005){
+          console.log("response code: "+response.resultCode);
+          this.router.navigate(["/login"]);
+          this.globals.loading=false;
+        }
+        else{
+          console.log("Existing session found!");
+          this.globals.session = response.session;
+          this.globals.loading=false;
+          this.router.navigate(['/dashboard']);
+        }
+      }
+    );
+
   }
 
 }
