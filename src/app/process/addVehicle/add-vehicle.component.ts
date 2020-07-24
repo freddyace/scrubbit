@@ -72,7 +72,7 @@ export class AddVehicleComponent implements OnInit {
         console.log(data)
         if(data.resultCode==404556){
           console.log("Success");
-          this.globals.session = data.session;
+          this.globals._session = data.session;
           this.router.navigate(['/success']);
           
         }

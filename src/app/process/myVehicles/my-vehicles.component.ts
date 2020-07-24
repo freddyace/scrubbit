@@ -31,7 +31,7 @@ export class MyVehiclesComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.vehicleList = this.globals.session.baseDto.vehicleList;
+    this.vehicleList = this.globals._session.baseDto.vehicleList;
     if(this.vehicleList.length != 0){
       this.hasVehicles = true;
     }
