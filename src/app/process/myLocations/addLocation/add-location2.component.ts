@@ -60,9 +60,10 @@ export class AddLocation2Component implements OnInit {
     this.userLocation.name = this.locationNameControl.value;
     this.userService.postLocation(this.userLocation).subscribe(
       response => {
-        if(response.resultCode == 440499){
-          this.globals.session = response.session;
-          console.log(this.globals.session);
+        if(response.resultCode == 550500){
+          this.globals._session = response.session;
+          console.log(this.globals._session);
+          console.log("Post location response: "+response);
           this.router.navigate(["/success"]);
         }
         else{

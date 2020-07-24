@@ -6,42 +6,88 @@ import { Router } from '@angular/router';
 import { ILoginCredential } from '../../login/credentials/login.credential'
 import { ISession } from '../../session/session';
 import { CookieService } from 'ngx-cookie-service';
+import { IVehicle } from 'src/app/dashboard/vehicle/vehicle';
+import { IService } from 'src/app/entity/service';
 
 @Component({
   selector: 'app-order-service',
   templateUrl: './order-service.component.html',
   styleUrls: ['./order-service.component.css',
   "../../../assets/bootstrap/css/bootstrap.min.css",
-  "../../../assets/fonts/font-awesome.min.css",
-  // "assets/fonts/ionicons.min.css",
-  // "assets/css/Bootstrap-Callout-Success.css",
-  // "assets/css/button-1.css",
-  // "assets/css/Button-thib.css",
-  // "assets/css/button.css",
-  // "assets/css/Contact-Form-Clean.css",
-  // "assets/css/Contact-Form-v2-Modal--Full-with-Google-Map.css",
-  // "assets/css/dashboard.css",
-  // "assets/css/Features-Boxed.css",
-  // "assets/css/gradient-navbar-1.css",
-  // "assets/css/gradient-navbar.css",
-  // "assets/css/Hover-Button-1.css",
-  // "https://cdn.jsdelivr.net/npm/lightpick@1.3.4/css/lightpick.min.css",
-  // "assets/css/login-form-1.css",
-  // "assets/css/Login-Form-Clean-1.css",
-  // "assets/css/Login-Form-Clean.css",
-  // "../../.assets/css/styles.css",
-  // "../../../assets/css/untitled.css"
+  "../../../assets/fonts/font-awesome.min.css"
 ]
 })
 export class OrderServiceComponent implements OnInit {
+    fullName: string;
+    vehicleList: IVehicle[] = [];
+    vehicle: IVehicle = {
+      vehicleLicenseNum: "",
+      vehicleColor: "",
+      vehicleMake: "",
+      vehicleType: "",
+      vehicleModel: "",
+      vehiclePhotoPath: "",
+      vehicleYear: "",
+      userId: ""
+    };
+    service: IService = {
+      serviceId: null,
+      servicePrice: null,
+      serviceLocationId: null,
+      serviceStatusShort: null,
+      createDate: null,
+      lastUpdate: null,
+      serviceTypeId: null,
+      financialTransactionId: null,
+      eventId: null,
+      serviceStatusId: null,
+      serviceDate: null
+    }
+    phone: "";
+    dateString: "";
+    comments: "";
 
   constructor(private userService: UserService, private router:Router, 
     public globals:Globals, private cookieService: CookieService) { }
 
   ngOnInit(): void {
+    //Reload session
+    let cookie = this.cookieService.get("sessionId");
+    console.log(cookie);
+    this.globals.loading = true;
+    if(this.globals._session == null||this.globals._session == undefined){
+      this.userService.retrieveState(cookie).subscribe(
+        response => {
+          console.log(response);
+          if(response.resultCode == 303005){
+            console.log("response code: "+response.resultCode);
+            this.router.navigate(["/login"]);
+            this.globals.loading=false;
+          }
+          else{
+            console.log("Existing session found!");
+            this.globals._session = response.session;
+            this.globals.loading=false;
+            this.router.navigate(['/dashboard']);
+          }
+        }
+      );
+    }
+
+
+    //Repopulate stuffzz
+    this.fullName = this.globals._session.user.userFirstname + " "+ this.globals._session.user.userLastname;
+    console.log("Full name: "+ this.fullName);
+    this.vehicleList = this.globals._session.baseDto.vehicleList;
+    console.log(this.vehicleList);
 
   }
-
+  selectVehicle(vehicle){
+    this.vehicle = vehicle;
+  }
+  setServiceTime(timeString){
+    this.service.serviceDate = timeString; //TODO: may have to trim this part
+  }
   goToDashboard(){
     this.router.navigate(['dashboard']);
   }

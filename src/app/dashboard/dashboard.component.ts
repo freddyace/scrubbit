@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  userFirstName = this.globals.session.user.userFirstname;
+  userFirstName = this.globals._session.user.userFirstname;
   constructor(private userService: UserService, private cookieService:CookieService,
     private router:Router, public globals:Globals) { }
 

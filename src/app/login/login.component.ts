@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
             console.log(response.session);
             if(response.resultCode == 404040){
               console.log(response.session.baseDto);
-              this.globals.session = response.session;
+              this.globals._session = response.session;
               this.globals.loading = false;
               this.globals.hasAlert = false;
               this.cookieService.set('sessionId',response.session.sessionId);
@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("OS detected: "+this.globals.getOS())
     let cookie = this.cookieService.get("sessionId");
     console.log(cookie);
     this.globals.loading = true;
@@ -86,7 +87,7 @@ export class LoginComponent implements OnInit {
         }
         else{
           console.log("Existing session found!");
-          this.globals.session = response.session;
+          this.globals._session = response.session;
           this.globals.loading=false;
           this.router.navigate(['/dashboard']);
         }

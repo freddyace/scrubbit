@@ -22,36 +22,74 @@
                     <div class="col-12 col-md-6" id="message">
                         <h2 class="h4"><i class="fa fa-car"></i>&nbsp;Order information<small><small class="required-input"></small></small>
                         </h2>
-                        <div class="form-group"><label for="from-name">Name</label><span class="required-input"></span>
+                        <div class="col-sm-6 col-md-12 col-lg-6">
+                            <div><span><strong>{{fullName}}</strong></span></div>
+                            <div><span>{{vehicle.vehicleColor}} {{vehicle.vehicleYear}} {{vehicle.vehicleMake}} {{vehicle.vehicleModel}}</span></div>
+                            <div><span>www.awebsite.com</span>
+                                <hr class="d-flex d-md-none">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="from-name">Name</label>
+                            <span class="required-input"></span>
                             <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div><input class="form-control" type="text" id="from-name" name="name" required="" placeholder="Full Name"></div>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-user-o"></i>
+                                    </span>
+                                </div>
+                                <input class="form-control" type="text" id="from-name" name="name" required="" placeholder="Full Name" value="{{fullName}}">
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Vehicle&nbsp;</button>
-                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">1996 White BMW 318ti</a><a class="dropdown-item" role="presentation" href="#">2017 Red Nissan Altima</a><a class="dropdown-item" role="presentation" href="#">2005 Silver Honda Civic</a></div>
+                                <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" role="presentation" (click)="selectVehicle(vehicle)" *ngFor="let vehicle of vehicleList">{{vehicle.vehicleYear}} {{vehicle.vehicleColor}} {{vehicle.vehicleMake}} {{vehicle.vehicleModel}}</a>
+                                </div>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend"></div>
                             </div>
                         </div>
                         <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Service Type</button>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Body Wash</a><a class="dropdown-item" role="presentation" href="#">Wheel &amp; Rim</a><a class="dropdown-item" role="presentation" href="#">Full exterior</a></div>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="#">Body Wash</a>
+                                <a class="dropdown-item" role="presentation" href="#">Wheel &amp; Rim</a>
+                                <a class="dropdown-item" role="presentation" href="#">Full exterior</a>
+                            </div>
                         </div>
                         <div class="form-row">
                             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
-                                <div class="form-group"><label for="from-phone">Phone</label><span class="required-input">*</span>
+                                <div class="form-group"><label for="from-phone">Phone</label><span class="required-input">* (notifications get sent to this #)</span>
                                     <div class="input-group">
                                         <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" id="from-phone" name="phone" required="" placeholder="Primary Phone"></div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group mb-4">
-                                        <div class="input-group-prepend"><span class="input-group-text">Date</span></div><input class="form-control" type="text" id="datePicker"></div>
-                                </div>
+                                <!-- <div class="form-group"> -->
+                                    <!-- <div class="input-group mb-4"> -->
+                                        <!-- <div class="input-group-prepend">
+                                            <span class="input-group-text">Date</span>
+                                        </div> -->
+                                        <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
+                                        <div class=" basic-container">
+                                        <mat-form-field >
+                                            <mat-label style="margin: 5px;">Date</mat-label>
+                                          <!-- #docregion toggle -->
+                                            <input matInput [matDatepicker]="picker">
+                                            <mat-datepicker-toggle matSuffix [for]="picker" style="color: black;"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker style="color: black;"></mat-datepicker>
+                                          <!-- #enddocregion toggle -->
+                                          </mat-form-field>
+                                        </div>
+                                    <!-- </div> -->
+                                <!-- </div> -->
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
-                                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Preferred Time&nbsp;</button>
-                                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Morning: 8:00 a.m. EST - 11:59 a.m. EST&nbsp;</a><a class="dropdown-item" role="presentation" href="#">Afternoon: 12:00 p.m. EST - 7:59 p.m. EST</a><a class="dropdown-item"
-                                            role="presentation" href="#">Evening: 8:00 p.m. EST - 11:59 p.m. EST</a></div>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Preferred Time&nbsp;</button>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="#">Morning: 8:00 a.m. EST - 11:59 a.m. EST&nbsp;</a>
+                                        <a class="dropdown-item" role="presentation" href="#">Afternoon: 12:00 p.m. EST - 7:59 p.m. EST</a>
+                                        <a class="dropdown-item" role="presentation" href="#">Evening: 8:00 p.m. EST - 11:59 p.m. EST</a></div>
                                 </div>
                                 <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Payment&nbsp;</button>
                                     <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Visa - 0945</a><a class="dropdown-item" role="presentation" href="#">Mastercard - 9943</a><a class="dropdown-item" role="presentation" href="#">Paypal - freddyace1993@gmail.com</a></div>
